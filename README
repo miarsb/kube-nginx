@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>kube-nginx README</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>ube-nginx README</h1>
+<p>Create deployment using YAML file: kubectl apply -f C:\Users\Brando\Documents\repos\kube-nginx/deployment.yaml</p>
+<p>Create Service to expose nginx: kubectl expose deployment/kube-nginx --type="LoadBalancer" --port 8080 --target-port 80</p>
+<p>For online documentation and support please refer to
+</body>
+</html>
