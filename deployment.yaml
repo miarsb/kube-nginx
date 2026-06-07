@@ -35,9 +35,39 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        envFrom:
+        - configMapRef:
+            name: kube-nginx-config
+        - secretRef:
+            name: db-user-pass
         volumeMounts:
         - name: website-volume
           mountPath: /usr/share/nginx/html
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+            httpHeaders:
+            - name: Custom-Header
+              value: WhatIf
+          initialDelaySeconds: 45
+          periodSeconds: 3
+          failureThreshold: 5
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /etc/hosts
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 2
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "250m"
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
       volumes:
       - name: website-volume
         hostPath:

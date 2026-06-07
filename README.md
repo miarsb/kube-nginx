@@ -10,19 +10,27 @@ minikube status
 ```
 minikube start
 ```
-* Configure volume mount for nginx to access our site:
+* Configure volume mount for nginx to access our site(make sure to do this in a seperate window):
 ```
-minikube mount C:/path/to/loca/site:/mnt/data
+minikube mount C:\path\to\repo\site:/mnt/data
+```
+# Create configmap:
+```
+kubectl create -f C:\path\to\repo\kube-nginx-config.yaml
+```
+# Create secret:
+```
+kubectl create -f C:\path\to\repo\secrets.yaml
 ```
 * Create deployment using YAML file:
 ```
-kubectl apply -f C:/Users/Brando/Documents/repos/kube-nginx/deployment.yaml
+kubectl create -f C:\path\to\repo\deployment.yaml
 ```
 * Create Service to expose nginx:
 ```
 kubectl expose deployment/kube-nginx --type="LoadBalancer" --port 8080 --target-port 80
 ```
-* Create tunnel to access node
+* Create tunnel to access node(make sure to do this in a seperate window):
 ```
 minikube tunnel
 ```
@@ -40,4 +48,12 @@ kubectl delete service kube-nginx
 * Delete Deployment:
 ```
 kubectl delete deployment kube-nginx
+```
+* Delete ConfigMap:
+```
+kubectl delete configmap kube-nginx-map
+```
+* Delete Secret:
+```
+kubectl delete deployment db-user-pass
 ```

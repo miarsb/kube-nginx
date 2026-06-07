@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-nginx-config
+  namespace: default
+data:
+  shared_home: "/path/to/home"
+  number: "5"
