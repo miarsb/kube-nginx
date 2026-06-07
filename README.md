@@ -61,3 +61,7 @@ kubectl delete configmap kube-nginx-config
 ```
 kubectl delete secret db-user-pass
 ```
+* Delete Ingress:
+```
+ kubectl delete ingress nginx-ingress
+ ```
