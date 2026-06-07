@@ -14,11 +14,11 @@ minikube start
 ```
 minikube mount C:\path\to\repo\site:/mnt/data
 ```
-# Create configmap:
+* Create configmap:
 ```
 kubectl create -f C:\path\to\repo\kube-nginx-config.yaml
 ```
-# Create secret:
+* Create secret:
 ```
 kubectl create -f C:\path\to\repo\secrets.yaml
 ```
@@ -33,6 +33,10 @@ kubectl expose deployment/kube-nginx --type="LoadBalancer" --port 8080 --target-
 * Create tunnel to access node(make sure to do this in a seperate window):
 ```
 minikube tunnel
+```
+* Create ingress:
+```
+kubectl create -f C:\path\to\repo\ingress.yaml
 ```
 * Check if site is available:
 ```
@@ -51,9 +55,9 @@ kubectl delete deployment kube-nginx
 ```
 * Delete ConfigMap:
 ```
-kubectl delete configmap kube-nginx-map
+kubectl delete configmap kube-nginx-config
 ```
 * Delete Secret:
 ```
-kubectl delete deployment db-user-pass
+kubectl delete secret db-user-pass
 ```
